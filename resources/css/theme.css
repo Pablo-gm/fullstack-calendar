@@ -76,3 +76,11 @@ body.dark {
     --surface-container-high:#282a2d;
     --surface-container-highest:#333538;
 }
+
+#main-nav {
+    min-inline-size: 3rem;
+}
+
+#main-nav.max {
+    min-inline-size: 12.75rem;
+}
