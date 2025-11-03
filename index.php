@@ -21,7 +21,7 @@ include "calendar.php";
             <button class="circle transparent" onclick="toggleNav()">
                 <i>menu</i>
             </button>
-            <h6 class="max center-align">Headline</h6>
+            <h6 class="max center-align" id="monthYear">Headline</h6>
             <button class="circle transparent">
                 <i>chevron_left</i>
             </button>
@@ -42,6 +42,7 @@ include "calendar.php";
                         <i>widgets</i>
                         <span>Explore</span>
                     </a>
+                    <div id="clock"></div>
                 </nav>
             </div>
             <div class="max surface-bright square right-margin small-elevate calendar-grid" id="calendar">
@@ -107,8 +108,11 @@ include "calendar.php";
            
         </dialog>
     </div>
-
+    <script>
+        const events = <?= json_encode($eventsFromDB, JSON_UNESCAPED_UNICODE); ?>;
+    </script>
     <script src="/resources/js/site.js"></script>
+    <script src="/resources/js/calendar.js"></script>
 </body>
 
 </html>
