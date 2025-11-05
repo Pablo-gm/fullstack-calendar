@@ -81,7 +81,7 @@ function renderCalendar(date = new Date()) {
     overlay.className = "day-overlay";
 
     const addBtn = document.createElement("button");
-    addBtn.className = "overlay-btn";
+    addBtn.className = "border small";
     addBtn.textContent = "+ Add";
     addBtn.onclick = (e) => {
       e.stopPropagation();
@@ -91,7 +91,7 @@ function renderCalendar(date = new Date()) {
 
     if (eventsToday.length > 0) {
       const editBtn = document.createElement("button");
-      editBtn.className = "overlay-btn";
+      editBtn.className = "small";
       editBtn.textContent = "✏️ Edit";
       editBtn.onclick = (e) => {
         e.stopPropagation();
@@ -195,5 +195,5 @@ function updateClock() {
 
 // 🚀 Run on Page Load
 renderCalendar(currentDate);
-updateClock();
-setInterval(updateClock, 1000);
+//updateClock();
+//setInterval(updateClock, 1000);

@@ -11,6 +11,9 @@ include "calendar.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/resources/css/beer.min.css" />
     <link rel="stylesheet" href="/resources/css/theme.css" />
 </head>
@@ -36,17 +39,35 @@ include "calendar.php";
                 <nav id="main-nav" class="m l max left transparent no-padding">
                     <a>
                         <i>home</i>
-                        <span>Install</span>
+                        <span>Home</span>
                     </a>
                     <a>
-                        <i>widgets</i>
-                        <span>Explore</span>
+                        <i>group</i>
+                        <span>Teams</span>
+                    </a>
+                    <a>
+                        <i>notifications</i>
+                        <span>Notifications</span>
+                    </a>
+                    <a>
+                        <i>assignment</i>
+                        <span>Tasks</span>
+                    </a>
+                    <a>
+                        <i>support</i>
+                        <span>Support</span>
+                    </a>
+                    <a>
+                        <i>settings</i>
+                        <span>Settings</span>
                     </a>
                     <div id="clock"></div>
                 </nav>
             </div>
-            <div class="max surface-bright square right-margin small-elevate calendar-grid" id="calendar">
-                Calendar here
+            <div class="max surface-lowest square right-margin small-elevate padding">
+                <div class="surface-container calendar-grid" id="calendar">
+                    Calendar here
+                </div>
             </div>
         </div>
     </main>

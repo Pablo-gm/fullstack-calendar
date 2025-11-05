@@ -85,12 +85,20 @@ body.dark {
     min-inline-size: 12.75rem;
 }
 
+#main-nav:not(.max) a span{
+    max-width: 48px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
 /* Calendar */
 
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
+    gap: 4px;
+    border-radius: 0;
 }
 
 /* Mobile (Grid) */
@@ -114,11 +122,18 @@ body.dark {
     text-align: center;
 }
 
+.day-name{
+    background-color: var(--primary-container);
+    color: var(--on-primary-container);
+    font-weight: 500;
+    font-size: 1rem;
+    padding: .5rem;
+}
 
 .day {
-    background: #FFF;
-    border: 1px solid #e5e7eb;
-    border-radius: 6px;
+    background: var(--surface);
+    border: none;
+    border-radius: 0px;
     min-height: 100px;
     padding: 8px;
     display: flex;
@@ -130,12 +145,11 @@ body.dark {
 }
 
 .day:hover {
-    background: #f3f4f6;
+    background: var(--surface-container-lowest);
 }
 
 .day.today {
-    background: var(--primary-light);
-    border-color: var(--primary-dark)
+    border: 2px solid var(--primary);
 }
 
 .date-number {
@@ -145,7 +159,7 @@ body.dark {
 
 .event {
     background-color: var(--primary);
-    color: white;
+    color: var(--on-primary-container);
     padding: 6px 8px;
     border-radius: 6px;
     margin-top: 6px;
