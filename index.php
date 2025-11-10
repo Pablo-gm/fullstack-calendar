@@ -25,10 +25,10 @@ include "calendar.php";
                 <i>menu</i>
             </button>
             <h6 class="max center-align" id="monthYear">Headline</h6>
-            <button class="circle transparent">
+            <button class="circle transparent"  onclick="changeMonth(-1)">
                 <i>chevron_left</i>
             </button>
-            <button class="circle transparent">
+            <button class="circle transparent"  onclick="changeMonth(1)">
                 <i>chevron_right</i>
             </button>
         </nav>
@@ -64,7 +64,7 @@ include "calendar.php";
                     <div id="clock"></div>
                 </nav>
             </div>
-            <div class="max surface-lowest square right-margin small-elevate padding">
+            <div class="max surface-bright square right-margin small-elevate padding">
                 <div class="surface-container calendar-grid" id="calendar">
                     Calendar here
                 </div>
@@ -74,9 +74,9 @@ include "calendar.php";
 
     <!-- DIALOG -->
     <div id="dialog-wrapper">
-        <div class="overlay"></div>
-        <dialog class="modal" id="dialog-modal">
-            <h5 id="dialog-title">Modal</h5>
+        <div class="overlay" id="dialog-overlay"></div>
+        <dialog class="modal" id="dialog">
+            <h5 class="dialog-header"><span id="dialog-title">Event</span> <button id="delete-button" class="transparent circle display-none" data-ui="#dialog-modal"><i>delete</i></button></h5>
 
             <div id="eventSelectorWrapper" style="display: none;">
                 <div class="field label suffix border small">
@@ -116,14 +116,13 @@ include "calendar.php";
                     <input type="time" name="end_time" id="endTime" required placeholder=" ">
                     <label for="endTime">End Time:</label>
                 </div>
-                 <nav class="right-align no-space"><button class="transparent link" data-ui="#dialog-modal">Cancel</button><button class="" data-ui="#dialog-modal" type="submit">Save</button></nav>
+                 <nav class="right-align no-space" id="edit-buttons"><button class="transparent link" data-ui="#dialog-modal" type="button" onclick="closeModal()">Cancel</button><button class="" data-ui="#dialog-modal" type="submit">Save</button></nav>
             </form>
 
             <!-- Delete Form -->
-            <form method="POST" onsubmit="return confirm('Are you sure you want to delete this appointment?')">
+            <form method="POST" id="delete-form" onsubmit="return confirm('Are you sure you want to delete this appointment?')">
                 <input type="hidden" name="action" value="delete">
                 <input type="hidden" name="event_id" id="deleteEventId">
-                 <nav class="right-align no-space"><button class="transparent link" data-ui="#dialog-modal">Cancel</button><button class="error" data-ui="#dialog-modal" type="submit">Delete</button></nav>
             </form>
 
            

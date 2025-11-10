@@ -1,6 +1,11 @@
 const calendarEl = document.getElementById("calendar");
 const monthYearEl = document.getElementById("monthYear");
-const modalEl = document.getElementById("dialog-wrapper");
+const modalEl = document.getElementById("dialog");
+const modalOverlayEl = document.getElementById("dialog-overlay");
+const modalTitle = document.getElementById("dialog-title");
+const deletetBtn = document.getElementById("delete-button");
+const deletetForm = document.getElementById("delete-form");
+
 let currentDate = new Date();
 
 // 📅 Generate Full Calendar View
@@ -64,11 +69,11 @@ function renderCalendar(date = new Date()) {
 
       const instructorEl = document.createElement("div");
       instructorEl.className = "instructor";
-      instructorEl.textContent = "🧑🏻‍🏫 " + event.title.split(" - ")[1];
+      instructorEl.innerHTML = `<i>person</i> ${event.title.split(" - ")[1]}`;
 
       const timeEl = document.createElement("div");
       timeEl.className = "time";
-      timeEl.textContent = `⏰ ${event.start_time} - ${event.end_time}`;
+      timeEl.innerHTML = `<i>nest_clock_farsight_analog</i> ${event.start_time} - ${event.end_time}`;
 
       ev.appendChild(courseEl);
       ev.appendChild(instructorEl);
@@ -81,8 +86,8 @@ function renderCalendar(date = new Date()) {
     overlay.className = "day-overlay";
 
     const addBtn = document.createElement("button");
-    addBtn.className = "border small";
-    addBtn.textContent = "+ Add";
+    addBtn.className = "small";
+    addBtn.textContent = "Add";
     addBtn.onclick = (e) => {
       e.stopPropagation();
       openModalForAdd(dateStr);
@@ -91,8 +96,8 @@ function renderCalendar(date = new Date()) {
 
     if (eventsToday.length > 0) {
       const editBtn = document.createElement("button");
-      editBtn.className = "small";
-      editBtn.textContent = "✏️ Edit";
+      editBtn.className = "small tertiary";
+      editBtn.textContent = "Edit";
       editBtn.onclick = (e) => {
         e.stopPropagation();
         openModalForEdit(eventsToday);
@@ -125,13 +130,18 @@ function openModalForAdd(dateStr) {
     wrapper.style.display = "none";
   }
 
-  modalEl.style.display = "flex";
+  modalTitle.innerText = "Add event";
+  modalEl.classList.add("active");
+  modalOverlayEl.classList.add("active");
 }
 
 // ✏️ Edit Event Modal
 function openModalForEdit(eventsOnDate) {
   document.getElementById("formAction").value = "edit";
-  modalEl.style.display = "flex";
+  deletetBtn.classList.remove('display-none');
+  modalTitle.innerText = "Edit event";
+  modalEl.classList.add("active");
+  modalOverlayEl.classList.add("active");
 
   const selector = document.getElementById("eventSelector");
   const wrapper = document.getElementById("eventSelectorWrapper");
@@ -173,7 +183,9 @@ function handleEventSelection(eventJSON) {
 
 // ❌ Close the Modal
 function closeModal() {
-  modalEl.style.display = "none";
+  modalEl.classList.remove("active");
+  modalOverlayEl.classList.remove("active");
+  deletetBtn.classList.add('display-none');
 }
 
 // 🔄 Navigate Between Months
@@ -191,6 +203,11 @@ function updateClock() {
     now.getMinutes().toString().padStart(2, "0"),
     now.getSeconds().toString().padStart(2, "0"),
   ].join(":");
+}
+
+// Submit delete form
+function deleteForm() {
+  deletetForm.submit();
 }
 
 // 🚀 Run on Page Load
